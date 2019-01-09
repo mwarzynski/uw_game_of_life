@@ -3,12 +3,12 @@
 
 void start(int width, int height, char *T);
 void run();
-void cleanup();
+void stop();
 
 char *T;
 int width, height;
 
-int load_input_file(char *filename) {
+int load_data(char *filename) {
     FILE *f;
     f = fopen(filename, "r");
     if (f == NULL) {
@@ -49,6 +49,10 @@ int load_input_file(char *filename) {
     return 0;
 }
 
+void unload_data() {
+    free(T);
+}
+
 void print_T() {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -63,19 +67,18 @@ int main(int argc, char **argv) {
         printf("Usage: game_of_life ./input\n");
         return 1;
     }
-
-    if (load_input_file(argv[1]) != 0) {
+    if (load_data(argv[1]) != 0) {
         return 2;
     }
 
     start(width, height, T);
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 4; i++) {
         run();
         print_T();
+        printf("\n");
     }
-    cleanup();
+    stop();
 
-    free(T);
-
+    unload_data(T);
     return 0;
 }
