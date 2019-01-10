@@ -29,8 +29,9 @@ int load_data(char *filename) {
         return 1;
     }
 
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
+    int x, y;
+    for (y = 0; y < height; y++) {
+        for (x = 0; x < width; x++) {
             if (fscanf(f, "%c", &T[y*width + x]) <= 0) {
                 printf("couldn't parse board, allowed values (0,1)\n");
                 fclose(f);
@@ -54,8 +55,9 @@ void unload_data() {
 }
 
 void print_T() {
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
+    int x, y;
+    for (y = 0; y < height; y++) {
+        for (x = 0; x < width; x++) {
             printf("%c", T[y*width + x]);
         }
         printf("\n");
@@ -72,7 +74,8 @@ int main(int argc, char **argv) {
     }
 
     start(width, height, T);
-    for (int i = 0; i < 4; i++) {
+    int i;
+    for (i = 0; i < 4; i++) {
         run();
         print_T();
         printf("\n");
