@@ -65,8 +65,13 @@ void print_T() {
 }
 
 int main(int argc, char **argv) {
-    if (argc != 2) {
-        printf("Usage: game_of_life ./input\n");
+    if (argc != 3) {
+        printf("Usage: game_of_life ./input steps\n");
+        return 1;
+    }
+    int steps = atoi(argv[2]);
+    if (steps <= 0) {
+        printf("Number of steps must be positive.\n");
         return 1;
     }
     if (load_data(argv[1]) != 0) {
@@ -75,10 +80,9 @@ int main(int argc, char **argv) {
 
     start(width, height, T);
     int i;
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < steps; i++) {
         run();
         print_T();
-        printf("\n");
     }
     stop();
 
