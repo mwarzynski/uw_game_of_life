@@ -32,7 +32,7 @@ int load_data(char *filename) {
     int x, y;
     for (y = 0; y < height; y++) {
         for (x = 0; x < width; x++) {
-            if (fscanf(f, "%c", &T[y*width + x]) <= 0) {
+            if (fscanf(f, "%c ", &T[y*width + x]) <= 0) {
                 printf("couldn't parse board, allowed values (0,1)\n");
                 fclose(f);
                 free(T);
@@ -58,10 +58,15 @@ void print_T() {
     int x, y;
     for (y = 0; y < height; y++) {
         for (x = 0; x < width; x++) {
-            printf("%c", T[y*width + x]);
+            if (T[y*width + x] == '1') {
+                printf("\e[1;32m1\e[0m ");
+            } else {
+                printf("0 ");
+            }
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 int main(int argc, char **argv) {
