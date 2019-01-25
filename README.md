@@ -1,5 +1,5 @@
-# Zadanie 3: automat komórkowy
-W zadaniu 3 zajmiemy się "grą w życie", ale tym razem będziemy pracować na ARMie (a ściślej na emulatorze obecnym w pracowni).
+# Automat komórkowy
+W tym zadaniu zajmiemy się "grą w życie", ale tym razem będziemy pracować na ARMie (a ściślej na emulatorze obecnym w pracowni).
 
 Naszym celem będzie napisanie funkcji realizujących symulację automatu komórkowego Conwaya, tzw. "gry w życie".
 Gra odbywa się na prostokątnej planszy składającej się z kwadratowych komórek. Każda komórka może być żywa lub martwa.
@@ -29,9 +29,4 @@ Dokładna postać wewnętrzna tablicy `T` nie jest określona, powinno być jedn
  - W kolejnych wierszach wiersze tablicy `T` w postaci zer (martwa komórka) i jedynek (żywa komórka), rozdzielonych pojedynczymi spacjami.
 
 Testowy program główny napisany w C powinien zainicjować tablicę `T` i rozpocząć symulację. Po każdym wywołaniu procedury run powinno się wyświetlić aktualną sytuację -- może być tekstowo, czyli gwiazdki i spacje lub tp. Program powinien otrzymać jako argumenty nazwę pliku i liczbę kroków.
-
-Rozwiązania nie zawierające pliku **Makefile** nie będą sprawdzane.
-
-Rozwiązania (procedury w asemblerze i program w C wraz z przykładowymi testami) należy wysłać do końca zajęć (26 stycznia 2019, 23:59) pocztą na zbyszek@mimuw.edu.pl jako pojedynczy załącznik -- archiwum o nazwie wskazującej na autora (np. ab123456-zad3.tgz), spakowane z osobnego katalogu o tej samej nazwie (ale bez tgz).
-Program ma działać na emulatorze QEMU zainstalowanym w laboratoriach w ARMv4 lub AMv5.
 
