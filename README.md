@@ -1,32 +1,34 @@
-# Automat komórkowy
-W tym zadaniu zajmiemy się "grą w życie", ale tym razem będziemy pracować na ARMie (a ściślej na emulatorze obecnym w pracowni).
+# Game of Life (ARM Assembly)
 
-Naszym celem będzie napisanie funkcji realizujących symulację automatu komórkowego Conwaya, tzw. "gry w życie".
-Gra odbywa się na prostokątnej planszy składającej się z kwadratowych komórek. Każda komórka może być żywa lub martwa.
+In this task we will deal with the "game of life", but this time we will work on ARM (or more precisely - emulator for ARM).
 
-## Opis
+Our goal will be to write functions that simulate the Conway cellular automaton, so-called "game of life".
+The game takes place on a rectangular board consisting of square cells. Each cell can be alive or dead.
 
-Czas jest dyskretny, w każdym kroku symulacji:
- - Każda żywa komórka, która ma 4 lub więcej żywych sąsiadów "umiera" z powodu tłoku.
- - Każda żywa komórka, która ma mniej niż 2 sąsiadów "umiera" z osamotnienia.
- - Jeśli martwa komórka ma dokładnie 3 żywych sąsiadów, to "ożywa".
- - Przez sąsiadów komórki rozumiemy 8 komórek bezpośrednio otaczających ją.
 
-Część napisana w języku wewnętrznym powinna eksportować procedury wołane z C:
+## Description
 
-Przygotowuje symulację:
+The time is discrete. At every step of the simulation:
+ - Any living cell that has 4 or more living neighbors "dies" due to crowd.
+ - Every living cell that has less than 2 neighbors "dies" from loneliness.
+ - If a dead cell has exactly 3 living neighbors, it becomes alive.
+ - By the neighbors of the cell we understand 8 cells directly surrounding it.
+
+The part written in the internal language should export procedures called from C:
+
+Prepares the simulation:
 ```c
-void start(int szer, int wys, char* T)
+void start(int width, int height, char *T)
 ```
 
-Przeprowadza jeden krok symulacji, po jego wykonaniu tablica `T` (przekazana przez start) zawiera nowy stan:
+Performs one step of the simulation, after its execution the array `T` contains a new state:
 ```c
 void run()
 ```
 
-Dokładna postać wewnętrzna tablicy `T` nie jest określona, powinno być jednak możliwe jej łatwe zainicjowanie w programie w C przez wczytanie początkowej zawartości z pliku zawierającego kolejno:
- - liczbę kolumn (szerokość) i wierszy (wysokość) w pierwszym wierszu;
- - W kolejnych wierszach wiersze tablicy `T` w postaci zer (martwa komórka) i jedynek (żywa komórka), rozdzielonych pojedynczymi spacjami.
+The exact internal form of the `T` array is not specified, but it should be possible to easily initialize it in the program in C by loading the initial content from a file containing:
+ - number of columns (width) and rows (height) in the first row;
+ - In the following lines, rows of the `T` array in the form of zeros (dead cell) and ones (live cell), separated by single spaces.
 
-Testowy program główny napisany w C powinien zainicjować tablicę `T` i rozpocząć symulację. Po każdym wywołaniu procedury run powinno się wyświetlić aktualną sytuację -- może być tekstowo, czyli gwiazdki i spacje lub tp. Program powinien otrzymać jako argumenty nazwę pliku i liczbę kroków.
+The main program written in C should initialize the `T` array and start the simulation. Each time you call the run procedure, the current situation should be displayed - it can be plaintext, i.e., asterisks and spaces. The program should receive the file name and number of steps as arguments.
 
