@@ -1,5 +1,9 @@
 # Game of Life (ARM Assembly)
 
+Game of Life implemented in ARM assembly.
+
+![Glider Gun](https://raw.github.com/mwarzynski/uw_game_of_life/master/images/glider_gun.gif)
+
 In this task we will deal with the "game of life", but this time we will work on ARM (or more precisely - emulator for ARM).
 
 Our goal will be to write functions that simulate the Conway cellular automaton, so-called "game of life".
